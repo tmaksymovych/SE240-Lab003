@@ -1,19 +1,20 @@
 from fastapi import FastAPI, Depends
 from controller.notes_controller import router as notes_router
-from service.notes_service import get_notes_service
-from service.user_service import get_user_service
 
-app = FastAPI( title="Awesome note-taking app", description="API for note-taking service", version="0.1.0")
+from service.visitor_service import get_skipass_service
+from service.skipass_service import get_visitor_service
+
+app = FastAPI( title="Awesome Resort app", description="GraphQl for Ski REsort Manager", version="0.1.0")
 app.include_router(notes_router)
 
 import strawberry.fastapi
 from graphqlapi.schema import schema
 
 def get_graphql_context( 
-                        notes_service = Depends(get_notes_service),
-                        user_service = Depends(get_user_service)
+                        skipass_service = Depends(get_skipass_service),
+                        visitor_service = Depends(get_visitor_service)
                         ):
-    return {"notes_service": notes_service, "user_service": user_service}
+    return {"skipass_service": skipass_service, "visitor_service": visitor_service}
 
 graphql_app = strawberry.fastapi.GraphQLRouter(
     schema=schema, 
