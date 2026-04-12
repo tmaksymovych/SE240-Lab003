@@ -1,0 +1,17 @@
+from sqlalchemy import create_all_engines
+from sqlalchemy.orm import sessionmaker
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+DATBASE_URL = os.getenv("DATABASE_URL")
+
+engine = create_all_engines(DATBASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close
