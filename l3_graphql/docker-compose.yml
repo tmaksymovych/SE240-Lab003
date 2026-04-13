@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: ski_resort_db
+    environment:
+      POSTGRES_USER: ski_admin
+      POSTGRES_PASSWORD: my_password
+      POSTGRES_DB: ski_resort_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: ski_resort_api
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://ski_admin:my_password@db:5432/ski_resort_db
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
