@@ -1,0 +1,78 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Виртуальное окружение
+.venv/
+venv/
+ENV/
+env/
+
+# Переменные окружения (СЕКРЕТЫ - крайне важно игнорировать!)
+.env
+.env.local
+.env.dev
+.env.test
+.env.prod
+*.env
+
+# IDE - VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# IDE - PyCharm / JetBrains
+.idea/
+
+# Базы данных
+*.db
+*.sqlite3
+# Если делаешь дампы базы данных локально
+*.sql
+*.dump
+
+# Логи
+*.log
+logs/
+
+# Тестирование
+.pytest_cache/
+.tox/
+.nox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Docker (если появятся специфичные файлы)
+.docker/
+
+# Система
+.DS_Store
+Thumbs.db
+desktop.ini
